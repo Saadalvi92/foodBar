@@ -19,7 +19,7 @@ function Login({navigation}) {
   const [password, setPassword] = useState();
   var config = {
     method: 'post',
-    url: 'http://amcrecipes.suretostop.com/loginUser',
+    url: 'https://amcrecipes.suretostop.com/loginUser',
     data: data,
   };
   const handleSubmit = () => {

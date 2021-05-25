@@ -20,7 +20,7 @@ function IndianCuisine(props) {
     form_data.append('cuisineId', props.route.params.id);
     var config = {
       method: 'post',
-      url: 'http://amcrecipes.suretostop.com/getCuisinCategories',
+      url: 'https://amcrecipes.suretostop.com/getCuisinCategories',
       data: form_data,
     };
     axios(config)
@@ -40,7 +40,7 @@ function IndianCuisine(props) {
       </Text>
       <Image
         source={{uri: Cuisine.image}}
-        style={{width: '100%', height: '45%'}}
+        style={{width: '100%', height: '45%', backgroundColor: '#000'}}
         resizeMode="contain"
       />
       <View

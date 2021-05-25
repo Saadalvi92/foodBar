@@ -28,7 +28,7 @@ function Register({navigation}) {
       data.append('password', password);
       var config = {
         method: 'post',
-        url: 'http://amcrecipes.suretostop.com/signup',
+        url: 'https://amcrecipes.suretostop.com/signup',
         data: data,
       };
       axios(config)

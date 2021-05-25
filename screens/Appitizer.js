@@ -21,7 +21,7 @@ function Appitizer(props) {
     form_data.append('cuisineCategoryId', cuisine_cat.id);
     var config = {
       method: 'post',
-      url: 'http://amcrecipes.suretostop.com/getCuisinItems',
+      url: 'https://amcrecipes.suretostop.com/getCuisinItems',
       data: form_data,
     };
     axios(config)

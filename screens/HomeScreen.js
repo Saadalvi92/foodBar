@@ -15,7 +15,7 @@ import {useEffect} from 'react';
 import {useState} from 'react';
 var config = {
   method: 'get',
-  url: 'http://amcrecipes.suretostop.com/getCuisines',
+  url: 'https://amcrecipes.suretostop.com/getCuisines',
 };
 function HomeScreen({navigation}) {
   useEffect(() => {
