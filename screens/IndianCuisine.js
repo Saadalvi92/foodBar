@@ -37,18 +37,16 @@ function IndianCuisine(props) {
   const [categories, setCategories] = useState();
   return (
     <View style={styles.container}>
-      {console.log(Cuisine.image)}
       <Text
         style={{fontWeight: 'bold', fontSize: 25, marginTop: height * 0.05}}>
         {Cuisine.title}
       </Text>
       <Image
-        style={{width: '100%', marginTop: '100%'}}
-        backgroundColor="#000"
-        resizeMode="contain"
         source={{uri: Cuisine.image}}
+        style={{width: '100%', height: '45%'}}
+        resizeMode="contain"
       />
-      <TouchableOpacity
+      <View
         style={{
           width: '60%',
           height: 55,
@@ -60,9 +58,9 @@ function IndianCuisine(props) {
           backgroundColor: '#CB4E47',
         }}>
         <Text style={{color: 'white', fontWeight: '600', fontSize: 16}}>
-          About Indian food
+          {Cuisine.title}
         </Text>
-      </TouchableOpacity>
+      </View>
       <Text
         style={{
           fontWeight: '600',
@@ -87,6 +85,7 @@ function IndianCuisine(props) {
                 marginTop: height * 0.02,
                 alignItems: 'center',
                 justifyContent: 'center',
+                overflow: 'hidden',
                 borderRadius: 10,
               }}>
               <Text>{item.title} </Text>
@@ -95,13 +94,16 @@ function IndianCuisine(props) {
         )}
       />
     </View>
+
+    //
   );
 }
 
 export default IndianCuisine;
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: '100%',
+    width: '100%',
     backgroundColor: 'white',
     alignItems: 'center',
   },
