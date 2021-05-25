@@ -12,19 +12,18 @@ import axios from 'axios';
 import FormData from 'form-data';
 import {useEffect} from 'react';
 import {useState} from 'react';
-var data = new FormData();
 let height = Dimensions.get('window').height;
 
 function Appitizer(props) {
   const cuisine_cat = props.route.params;
-  data.append('cuisineCategoryId', cuisine_cat.id);
-
-  var config = {
-    method: 'post',
-    url: 'http://amcrecipes.suretostop.com/getCuisinItems',
-    data: data,
-  };
   useEffect(() => {
+    var form_data = new FormData();
+    form_data.append('cuisineCategoryId', cuisine_cat.id);
+    var config = {
+      method: 'post',
+      url: 'http://amcrecipes.suretostop.com/getCuisinItems',
+      data: form_data,
+    };
     axios(config)
       .then(function (response) {
         setCuisineItem(response.data);
@@ -39,8 +38,6 @@ function Appitizer(props) {
       <Text style={{fontWeight: '600', fontSize: 20, marginTop: height * 0.05}}>
         Chooese your dish to prepare
       </Text>
-      {console.log(cuisineItem)}
-
       <FlatList
         data={cuisineItem}
         renderItem={({item}) => (
@@ -48,7 +45,6 @@ function Appitizer(props) {
             style={{alignItems: 'center'}}
             onPress={() => props.navigation.navigate('recipeScreen', item)}>
             <View>
-              {console.log(item.image)}
               <Image
                 source={{uri: item.image}}
                 style={{

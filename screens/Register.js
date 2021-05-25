@@ -11,7 +11,7 @@ import {
 import Button from '../components/Button';
 import axios from 'axios';
 import FormData from 'form-data';
-var data = new FormData();
+
 let height = Dimensions.get('window').height;
 let width = Dimensions.get('window').width;
 function Register({navigation}) {
@@ -20,19 +20,19 @@ function Register({navigation}) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [repeatPassword, setRepeatPassword] = useState();
-  var config = {
-    method: 'post',
-    url: 'http://amcrecipes.suretostop.com/signup',
-    data: data,
-  };
+
   const signUp = () => {
     if (password === repeatPassword) {
+      var data = new FormData();
       data.append('email', email);
       data.append('password', password);
-
+      var config = {
+        method: 'post',
+        url: 'http://amcrecipes.suretostop.com/signup',
+        data: data,
+      };
       axios(config)
         .then(function (response) {
-          console.log(response.data);
           if (response.data == 1) {
             alert('Signup Successfull');
             navigation.navigate('SignIn');

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Text,
   View,
@@ -6,28 +6,25 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  ScrollView,
   FlatList,
 } from 'react-native';
 import axios from 'axios';
 import FormData from 'form-data';
-import {useState} from 'react';
-var data = new FormData();
 let height = Dimensions.get('window').height;
 let width = Dimensions.get('window').width;
 function IndianCuisine(props) {
   const Cuisine = props.route.params;
 
   useEffect(() => {
-    data.append('cuisineId', Cuisine.id);
+    var form_data = new FormData();
+    form_data.append('cuisineId', props.route.params.id);
     var config = {
       method: 'post',
       url: 'http://amcrecipes.suretostop.com/getCuisinCategories',
-      data: data,
+      data: form_data,
     };
     axios(config)
       .then(function (response) {
-        console.log(response.data);
         setCategories(response.data);
       })
       .catch(function (error) {
@@ -48,10 +45,11 @@ function IndianCuisine(props) {
       />
       <View
         style={{
-          width: '60%',
-          height: 55,
+          width: '95%',
+          height: '10%',
           borderRadius: 10,
-          marginLeft: width * -0.2,
+          marginLeft: '1%',
+          // marginLeft: width * -0.2,
           marginTop: height * -0.1,
           justifyContent: 'center',
           alignItems: 'center',
@@ -69,7 +67,7 @@ function IndianCuisine(props) {
           marginLeft: width * -0.2,
           marginTop: height * 0.02,
         }}>
-        Indian food categories
+        {Cuisine.title} categories
       </Text>
       <FlatList
         data={categories}
